@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FilterControls from "./FilterControls";
+import ProductList from "./ProductList";
 
 const products = [
   { id: 1, name: "Laptop", category: "electronics", available: true },
@@ -32,35 +33,15 @@ function ProductFilters() {
       <h2>Product Filters</h2>
 
       <FilterControls
-    search={search}
-    newSearch={newSearch}
-    category={category}
-    newCategory={newCategory}
-    />
+        search={search}
+        newSearch={newSearch}
+        category={category}
+        newCategory={newCategory}
+        availableOnly={availableOnly}
+        newAvailable={newAvailable}
+      />
 
-      <select
-        value={category}
-        onChange={(event) => newCategory(event.target.value)}
-      >
-        <option value="all">All</option>
-        <option value="electronics">Electronics</option>
-        <option value="furniture">Furniture</option>
-      </select>
-
-      <label>
-        <input
-          type="checkbox"
-          checked={availableOnly}
-          onChange={(event) => newAvailable(event.target.checked)}
-        />
-        Available Only
-      </label>
-
-      <div>
-        {filteredProducts.map((product) => (
-          <p key={product.id}>{product.name}</p>
-        ))}
-      </div>
+      <ProductList filteredProducts={filteredProducts} />
     </div>
   );
 }
