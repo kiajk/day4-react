@@ -1,8 +1,11 @@
-    function FilterControls({search,
-         newSearch,
-         category,
-         newCategory,
-        }) {
+    function FilterControls({
+    search,
+    newSearch,
+    category,
+    newCategory,
+    availableOnly,
+     newAvailable,
+    }) {
     return (
         <div>
         <h3>Filter Controls</h3>
@@ -19,6 +22,12 @@
   <option value="electronics">Electronics</option>
   <option value="furniture">Furniture</option>
     </select>
+    <label>
+        <input type="checkbox"
+        checked={availableOnly}
+        onChange={(event) => newAvailable(event.target.checked)} />
+        Available Only
+    </label>
         </div>
     );
     }
